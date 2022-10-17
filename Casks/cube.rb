@@ -15,6 +15,8 @@ cask "cube" do
     regex(/href=.*?Cube[._-]v?(\d+(?:\.\d+)+)\.d/i)
   end
 
+  conflicts_with formula: "cubelib"
+
   app "Cube.app"
   # binary "#{appdir}/Cube.app/Contents/MacOS/cube"
   binary "#{appdir}/Cube.app/Contents/MacOS/cube3to4"
