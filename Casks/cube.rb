@@ -4,7 +4,7 @@ cask "cube" do
   sha256 "af568244578f5b1957992f9dc1b8eac90f87d2795d4ad9646ac9211898bdeb68"
 
   url "https://apps.fz-juelich.de/scalasca/releases/cube/#{version}/dist/Cube-#{version}.dmg",
-    verified: "apps.fz-juelich.de/scalasca/"
+      verified: "apps.fz-juelich.de/scalasca/"
   name "Cube"
   desc "Performance report explorer for Scalasca and Score-P"
   homepage "https://scalasca.org/software/cube-4.x/download.html"
