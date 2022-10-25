@@ -28,12 +28,20 @@ class Cubegui < Formula
     args << "--with-qt=#{Formula["qt@5"].opt_prefix}/"
     if ENV.compiler == :clang
       args << "--with-nocross-compiler-suite=clang"
-      args << "--with-qt-specs=macx-clang" if OS.mac?
       args << "CXXFLAGS=-stdlib=libc++"
       args << "LDFLAGS=-stdlib=libc++"
     else
       args << "--with-nocross-compiler-suite=gcc"
     end
+    spec = if OS.linux?
+      "linux-g++"
+    elsif ENV.compiler == :clang
+      "macx-clang"
+    else
+      "macx-g++"
+    end
+    spec << "-arm64" if Hardware::CPU.arm?
+    args << "--with-qt-specs=#{spec}"
 
     # CubeGUI configure only recognizes QT_CXX==g++
     inreplace "configure", "\"g++\")", "g++*)"
