@@ -25,13 +25,18 @@ class Cubegui < Formula
     ENV.deparallelize
 
     args = %w[--disable-silent-rules]
+    args << "--with-qt=#{Formula["qt@5"].opt_prefix}/"
     if ENV.compiler == :clang
       args << "--with-nocross-compiler-suite=clang"
-      args << "--with-qt=#{Formula["qt@5"].opt_prefix}/"
-      args << "--with-qt-specs=macx-clang"
+      args << "--with-qt-specs=macx-clang" if OS.mac?
       args << "CXXFLAGS=-stdlib=libc++"
       args << "LDFLAGS=-stdlib=libc++"
+    else
+      args << "--with-nocross-compiler-suite=gcc"
     end
+
+    # CubeGUI configure only recognizes QT_CXX==g++
+    inreplace "configure", "\"g++\")", "g++*)"
 
     system "./configure", *std_configure_args, *args
     system "make"
