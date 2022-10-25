@@ -60,8 +60,7 @@ class Cubegui < Formula
     cp_r "#{share}/doc/cubegui/example/", testpath
     chdir "#{testpath}/example" do
       # build and run tests
-      system "make", "-f", "Makefile.frontend", "all"
-      system "make", "-f", "Makefile.frontend", "run"
+      system "make", "-f", "Makefile.frontend", "run", "CUBE_EXAMPLES_DIR=#{testpath}/example/gui"
     end
   end
 end
