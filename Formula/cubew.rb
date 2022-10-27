@@ -3,6 +3,7 @@ class Cubew < Formula
   homepage "https://scalasca.org/software/cube-4.x/download.html"
   url "https://apps.fz-juelich.de/scalasca/releases/cube/4.7/dist/cubew-4.7.tar.gz"
   sha256 "a7c7fca13e6cb252f08d4380223d7c56a8e86a67de147bcc0279ebb849c884a5"
+  head "https://perftools.pages.jsc.fz-juelich.de/cicd/cubew/branches/master/latest.tar.gz"
   license "BSD-3-Clause"
 
   livecheck do
