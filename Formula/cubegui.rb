@@ -3,8 +3,8 @@ class Cubegui < Formula
   homepage "https://www.scalasca.org/scalasca/software/cube-4.x/download.html"
   url "https://apps.fz-juelich.de/scalasca/releases/cube/4.7/dist/cubegui-4.7.tar.gz"
   sha256 "103fe00fa9846685746ce56231f64d850764a87737dc0407c9d0a24037590f68"
-  head "https://perftools.pages.jsc.fz-juelich.de/cicd/cubegui/branches/master/latest.tar.gz"
   license "BSD-3-Clause"
+  head "https://perftools.pages.jsc.fz-juelich.de/cicd/cubegui/branches/master/latest.tar.gz"
 
   livecheck do
     url :homepage
@@ -45,7 +45,7 @@ class Cubegui < Formula
     args << "--with-qt-specs=#{spec}"
 
     # CubeGUI configure only recognizes QT_CXX==g++
-    inreplace "configure", "\"g++\")", "g++*)" if !build.head?
+    inreplace "configure", "\"g++\")", "g++*)" unless build.head?
 
     system "./configure", *std_configure_args, *args
     system "make"
