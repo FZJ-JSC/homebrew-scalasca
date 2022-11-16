@@ -11,7 +11,7 @@ class Cubegui < Formula
     regex(/href=.*?cubegui[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
-  depends_on "cubelib"
+  depends_on "fzj-jsc/scalasca/cubelib"
   depends_on "dbus"
   depends_on "qt@5"
 
